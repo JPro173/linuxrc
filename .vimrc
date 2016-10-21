@@ -291,4 +291,7 @@ set backupdir=~/.vim/backup
 map <F7> mzgg=G`z<bar>:%s/\s\+$<CR>
 ab ipdb import ipdb; ipdb.set_trace()
 
-let NERDTreeQuitOnOpen = 1
+let nerdtreequitonopen = 1
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
