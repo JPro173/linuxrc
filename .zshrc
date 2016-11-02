@@ -45,11 +45,12 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 local VENV="\$(virtualenv_info)";
 
 #$(git_prompt_info)
-export PROMPT="${VENV}%F{15}%K{10} %D{%H:%M} %F{10}%K{blue}%F{15}%K{blue}%F{15}%K{blue} %2~ %{%f%k%b%}%K{220}%F{blue}%F{220}%K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{yellow}%{$reset_color%} "
+export PROMPT="${VENV}%F{15}%K{238} Mint %F{15}%K{10} %D{%H:%M} %F{10}%K{blue}%F{15}%K{blue}%F{15}%K{blue} %2~ %{%f%k%b%}%K{220}%F{blue}%F{220}%K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
 
 alias gas="git add -A; git status -s"
 
 alias grepr='grep -r'
+alias grepri='grep -r -i'
 
 bindkey '^R' history-incremental-pattern-search-backward
 
