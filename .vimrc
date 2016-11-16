@@ -292,3 +292,6 @@ map <F7> mzgg=G`z<bar>:%s/\s\+$<CR>
 ab ipdb import ipdb; ipdb.set_trace()
 
 let NERDTreeQuitOnOpen = 1
+autocmd BufEnter * lcd %:p:h
+xnoremap p "_dP"
+let NERDTreeIgnore = ['\.pyc$']
