@@ -45,7 +45,8 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 local VENV="\$(virtualenv_info)";
 
 #$(git_prompt_info)
-export PROMPT="${VENV}%F{15}%K{238} Mint %F{15}%K{10} %D{%H:%M} %F{10}%K{blue}%F{15}%K{blue}%F{15}%K{blue} %2~ %{%f%k%b%}%K{220}%F{blue}%F{220}%K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
+export PROMPT="%F{15}%K{238} Mint ${VENV}%F{15}%K{10} %D{%H:%M} %F{10}%K{blue}%F{15}%K{blue}%F{15}%K{blue} %2~ %{%f%k%b%}%K{220}%F{blue}%F{220}%K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
+export SIMPLE="%K{blue}%F{220}%K{220} %K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
 
 alias gas="git add -A; git status -s"
 
@@ -73,7 +74,7 @@ smiles=('( •_•)'
         '¯\_(ツ)_/¯'
         '(✖╭╮✖)'
 )
-smile=1
+smile=0
 was_smile=0
 alias 'smile=1'='smile=1; was_smile=0'
 export RPROMPT='$smiles[$((smile*(1-was_smile)*(RANDOM%15+1+0*(was_smile=1-was_smile))))]'
@@ -81,3 +82,7 @@ export RPROMPT='$smiles[$((smile*(1-was_smile)*(RANDOM%15+1+0*(was_smile=1-was_s
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval $(thefuck --alias)
+export ip_addr=`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1  }'`
+alias run="python manage.py runserver 0.0.0.0:5000"
+alias run_loc="python manage.py runserver localhost:5000"
+alias ls="ls -lah"
