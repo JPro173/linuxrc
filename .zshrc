@@ -2,7 +2,7 @@ export ZSH=/home/profrog/.oh-my-zsh
 
 ZSH_THEME="solarized-powerline"
 
-plugins=(git)
+plugins=(git, extract)
 
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/john_the_ripper/run"
@@ -86,3 +86,5 @@ export ip_addr=`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ p
 alias run="python manage.py runserver 0.0.0.0:5000"
 alias run_loc="python manage.py runserver localhost:5000"
 alias ls="ls -lah"
+transfer() { if [ $# -eq 0  ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
+    tmpfile=$( mktemp -t transferXXX  ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
