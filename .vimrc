@@ -295,3 +295,9 @@ let NERDTreeQuitOnOpen = 1
 autocmd BufEnter * lcd %:p:h
 xnoremap p "_dP"
 let NERDTreeIgnore = ['\.pyc$']
+set spell spelllang=ru_ru,en_us
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
+let g:pymode_rope_lookup_project = 0

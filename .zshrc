@@ -2,7 +2,7 @@ export ZSH=/home/profrog/.oh-my-zsh
 
 ZSH_THEME="solarized-powerline"
 
-plugins=(git, extract)
+plugins=(git extract)
 
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/john_the_ripper/run"
@@ -84,7 +84,24 @@ export RPROMPT='$smiles[$((smile*(1-was_smile)*(RANDOM%15+1+0*(was_smile=1-was_s
 eval $(thefuck --alias)
 export ip_addr=`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1  }'`
 alias run="python manage.py runserver 0.0.0.0:5000"
+alias shell="python manage.py shell"
+alias migrate="python manage.py migrate"
+alias makemigrations="python manage.py makemigrations"
 alias run_loc="python manage.py runserver localhost:5000"
-alias ls="ls -lah"
+alias pipreq="pip install -r requirements.txt"
+alias ls="ls -lh"
 transfer() { if [ $# -eq 0  ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-    tmpfile=$( mktemp -t transferXXX  ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+    tmpfile=$( mktemp -t transferXXX  ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl  -s --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl -s --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+alias install="sudo apt-get install"
+alias mdroid="adbfs ~/droid"
+alias udroid="fusermount -u ~/droid"
+notificate() {
+    adb connect 192.168.1.23:5555 > /dev/null;
+    adb shell am start -n "com.android.mynotif.mynotifservice/com.android.mynotif.mynotifservice.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e title "${${2-'Kostya'}// /\ }" -e text "${${1-'Text'}// /\ }" >> /dev/null;
+}
+mkcd() {
+    mkdir $1 ; cd $1
+}
+
+alias usdisk="cd ~;fusermount -u ~/sdisk"
+alias sdisk="fusermount -u ~/sdisk; encfs /media/profrog/sdisk ~/sdisk; cd ~/sdisk";
