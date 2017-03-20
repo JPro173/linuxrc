@@ -1,4 +1,4 @@
-export ZSH=/home/profrog/.oh-my-zsh
+export ZSH=/home/$(whoami)/.oh-my-zsh
 
 ZSH_THEME="solarized-powerline"
 
@@ -81,7 +81,6 @@ export RPROMPT='$smiles[$((smile*(1-was_smile)*(RANDOM%15+1+0*(was_smile=1-was_s
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval $(thefuck --alias)
 export ip_addr=`/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1  }'`
 alias run="python manage.py runserver 0.0.0.0:5000"
 alias shell="python manage.py shell"
