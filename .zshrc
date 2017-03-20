@@ -45,7 +45,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 local VENV="\$(virtualenv_info)";
 
 #$(git_prompt_info)
-export PROMPT="%F{15}%K{238} Mint ${VENV}%F{15}%K{10} %D{%H:%M} %F{10}%K{blue}%F{15}%K{blue}%F{15}%K{blue} %2~ %{%f%k%b%}%K{220}%F{blue}%F{220}%K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
+
+color=blue
+hostname_=Mint
+export PROMPT="%F{15}%K{238} $hostname_ ${VENV}%F{15}%K{10} %D{%H:%M} %F{10}%K{$color}%F{15}%K{$color}%F{15}%K{$color} %2~ %{%f%k%b%}%K{220}%F{$color}%F{220}%K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
 export SIMPLE="%K{blue}%F{220}%K{220} %K{blue}%F{220}%F{blue}%K{gray}%F{grey}%K{grey}%F{229}%{$reset_color%} "
 
 alias gas="git add -A; git status -s"
